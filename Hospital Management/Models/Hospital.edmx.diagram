@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f8da059c81774850af43e8d405f1206d" Name="Diagram1">
+        <EntityTypeShape EntityType="HospitalManagementModel.Allergy" Width="1.5" PointX="11.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Center" Width="1.5" PointX="4.875" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Diagnostics" Width="1.5" PointX="11.875" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.District" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Doctor" Width="1.5" PointX="4.875" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Patient" Width="1.5" PointX="1.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Patient_Case" Width="1.5" PointX="8.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Place" Width="1.5" PointX="4.875" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Problems" Width="1.5" PointX="11.875" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient_C__Aller__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Center__Place_ID__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Doctor__Center_I__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient_C__Cente__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient_C__Diagn__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient__Distric__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient_C__Distr__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Place__Dist_ID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient_C__Docto__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient__Place__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient_C__Patie__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient_C__Place__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK__Patient_C__Probl__4CA06362" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

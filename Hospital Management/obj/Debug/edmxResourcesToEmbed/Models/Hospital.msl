@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HospitalManagementModelStoreContainer" CdmEntityContainer="HospitalManagementEntities">
+    <EntitySetMapping Name="Allergy">
+      <EntityTypeMapping TypeName="HospitalManagementModel.Allergy">
+        <MappingFragment StoreEntitySet="Allergy">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Center">
+      <EntityTypeMapping TypeName="HospitalManagementModel.Center">
+        <MappingFragment StoreEntitySet="Center">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Center1" ColumnName="Center" />
+          <ScalarProperty Name="Place_ID" ColumnName="Place_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diagnostics">
+      <EntityTypeMapping TypeName="HospitalManagementModel.Diagnostics">
+        <MappingFragment StoreEntitySet="Diagnostics">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="District">
+      <EntityTypeMapping TypeName="HospitalManagementModel.District">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="District1" ColumnName="District" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctor">
+      <EntityTypeMapping TypeName="HospitalManagementModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Doctor1" ColumnName="Doctor" />
+          <ScalarProperty Name="Center_ID" ColumnName="Center_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient">
+      <EntityTypeMapping TypeName="HospitalManagementModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="CR_Number" ColumnName="CR_Number" />
+          <ScalarProperty Name="Aadhar_No" ColumnName="Aadhar_No" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Relative" ColumnName="Relative" />
+          <ScalarProperty Name="Relative_Name" ColumnName="Relative_Name" />
+          <ScalarProperty Name="Age_Year" ColumnName="Age_Year" />
+          <ScalarProperty Name="Age_Month" ColumnName="Age_Month" />
+          <ScalarProperty Name="Blood_Group" ColumnName="Blood_Group" />
+          <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="Registration_Date" ColumnName="Registration_Date" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient_Case">
+      <EntityTypeMapping TypeName="HospitalManagementModel.Patient_Case">
+        <MappingFragment StoreEntitySet="Patient_Case">
+          <ScalarProperty Name="Case_No" ColumnName="Case_No" />
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Medical_Records" ColumnName="Medical_Records" />
+          <ScalarProperty Name="Exam_Category" ColumnName="Exam_Category" />
+          <ScalarProperty Name="Examination_def" ColumnName="Examination_def" />
+          <ScalarProperty Name="Allergy_Name" ColumnName="Allergy_Name" />
+          <ScalarProperty Name="Allergy_Status" ColumnName="Allergy_Status" />
+          <ScalarProperty Name="Allergy_Duration" ColumnName="Allergy_Duration" />
+          <ScalarProperty Name="Allergy_Severity" ColumnName="Allergy_Severity" />
+          <ScalarProperty Name="Allergy_Def" ColumnName="Allergy_Def" />
+          <ScalarProperty Name="Problem_Name" ColumnName="Problem_Name" />
+          <ScalarProperty Name="Problem_Defination" ColumnName="Problem_Defination" />
+          <ScalarProperty Name="Diagnostics_Name" ColumnName="Diagnostics_Name" />
+          <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Center_Name" ColumnName="Center_Name" />
+          <ScalarProperty Name="Doctor_Name" ColumnName="Doctor_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Place">
+      <EntityTypeMapping TypeName="HospitalManagementModel.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Place1" ColumnName="Place" />
+          <ScalarProperty Name="Dist_ID" ColumnName="Dist_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Problems">
+      <EntityTypeMapping TypeName="HospitalManagementModel.Problems">
+        <MappingFragment StoreEntitySet="Problems">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

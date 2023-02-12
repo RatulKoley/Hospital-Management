@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Hospital_Management.Models.Patient_Case>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medical_Records)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exam_Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Examination_def)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Allergy_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Allergy_Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Allergy_Severity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Allergy_Def)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Problem_Defination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Allergy.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Center.Center1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diagnostics.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.District.District1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doctor.Doctor1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.First_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place1.Place1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Problems.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medical_Records)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Exam_Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Examination_def)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Allergy_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Allergy_Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Allergy_Severity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Allergy_Def)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Problem_Defination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Allergy.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Center.Center1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagnostics.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.District.District1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctor.Doctor1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.First_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place1.Place1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Problems.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Case_No }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Case_No }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Case_No })
+        </td>
+    </tr>
+}
+
+</table>

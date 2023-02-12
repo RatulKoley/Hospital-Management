@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HospitalManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Allergy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Center">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Center" Type="varchar" MaxLength="50" />
+          <Property Name="Place_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Diagnostics">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="District" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Doctor" Type="varchar" MaxLength="50" />
+          <Property Name="Center_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="CR_Number" />
+          </Key>
+          <Property Name="CR_Number" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Aadhar_No" Type="bigint" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Middle_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Relative" Type="varchar" MaxLength="50" />
+          <Property Name="Relative_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Age_Year" Type="int" />
+          <Property Name="Age_Month" Type="int" />
+          <Property Name="Blood_Group" Type="varchar" MaxLength="50" />
+          <Property Name="Marital_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="bigint" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Picture" Type="varchar(max)" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="District_Name" Type="int" />
+          <Property Name="Place" Type="int" />
+          <Property Name="PIN" Type="bigint" />
+          <Property Name="Registration_Date" Type="date" />
+          <Property Name="Admin" Type="bit" />
+        </EntityType>
+        <EntityType Name="Patient_Case">
+          <Key>
+            <PropertyRef Name="Case_No" />
+          </Key>
+          <Property Name="Case_No" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patient_ID" Type="bigint" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Mobile" Type="bigint" />
+          <Property Name="Medical_Records" Type="varchar(max)" />
+          <Property Name="Exam_Category" Type="varchar" MaxLength="50" />
+          <Property Name="Examination_def" Type="varchar(max)" />
+          <Property Name="Allergy_Name" Type="int" />
+          <Property Name="Allergy_Status" Type="varchar" MaxLength="10" />
+          <Property Name="Allergy_Duration" Type="varchar" MaxLength="50" />
+          <Property Name="Allergy_Severity" Type="varchar" MaxLength="50" />
+          <Property Name="Allergy_Def" Type="varchar(max)" />
+          <Property Name="Problem_Name" Type="int" />
+          <Property Name="Problem_Defination" Type="varchar" MaxLength="50" />
+          <Property Name="Diagnostics_Name" Type="int" />
+          <Property Name="District_Name" Type="int" />
+          <Property Name="Place" Type="int" />
+          <Property Name="Center_Name" Type="int" />
+          <Property Name="Doctor_Name" Type="int" />
+        </EntityType>
+        <EntityType Name="Place">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Place" Type="varchar" MaxLength="50" />
+          <Property Name="Dist_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Problems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Center__Place_ID__412EB0B6">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Center" Type="Self.Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Center">
+              <PropertyRef Name="Place_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Center_I__440B1D61">
+          <End Role="Center" Type="Self.Center" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Center">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Center_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Distric__46E78A0C">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="District_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Place__47DBAE45">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Aller__4BAC3F29">
+          <End Role="Allergy" Type="Self.Allergy" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Allergy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Allergy_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Cente__5070F446">
+          <End Role="Center" Type="Self.Center" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Center">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Center_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Diagn__4D94879B">
+          <End Role="Diagnostics" Type="Self.Diagnostics" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostics">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Diagnostics_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Distr__4E88ABD4">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="District_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Docto__5165187F">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Doctor_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Patie__4AB81AF0">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="CR_Number" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Patient_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Place__4F7CD00D">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Probl__4CA06362">
+          <End Role="Problems" Type="Self.Problems" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problems">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Problem_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Place__Dist_ID__3E52440B">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Place" Type="Self.Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Place">
+              <PropertyRef Name="Dist_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalManagementModelStoreContainer">
+          <EntitySet Name="Allergy" EntityType="Self.Allergy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Center" EntityType="Self.Center" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnostics" EntityType="Self.Diagnostics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient_Case" EntityType="Self.Patient_Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Problems" EntityType="Self.Problems" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Center__Place_ID__412EB0B6" Association="Self.FK__Center__Place_ID__412EB0B6">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Center" EntitySet="Center" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Center_I__440B1D61" Association="Self.FK__Doctor__Center_I__440B1D61">
+            <End Role="Center" EntitySet="Center" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Distric__46E78A0C" Association="Self.FK__Patient__Distric__46E78A0C">
+            <End Role="District" EntitySet="District" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Place__47DBAE45" Association="Self.FK__Patient__Place__47DBAE45">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Aller__4BAC3F29" Association="Self.FK__Patient_C__Aller__4BAC3F29">
+            <End Role="Allergy" EntitySet="Allergy" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Cente__5070F446" Association="Self.FK__Patient_C__Cente__5070F446">
+            <End Role="Center" EntitySet="Center" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Diagn__4D94879B" Association="Self.FK__Patient_C__Diagn__4D94879B">
+            <End Role="Diagnostics" EntitySet="Diagnostics" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Distr__4E88ABD4" Association="Self.FK__Patient_C__Distr__4E88ABD4">
+            <End Role="District" EntitySet="District" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Docto__5165187F" Association="Self.FK__Patient_C__Docto__5165187F">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Patie__4AB81AF0" Association="Self.FK__Patient_C__Patie__4AB81AF0">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Place__4F7CD00D" Association="Self.FK__Patient_C__Place__4F7CD00D">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Probl__4CA06362" Association="Self.FK__Patient_C__Probl__4CA06362">
+            <End Role="Problems" EntitySet="Problems" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Place__Dist_ID__3E52440B" Association="Self.FK__Place__Dist_ID__3E52440B">
+            <End Role="District" EntitySet="District" />
+            <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Allergy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient_Case" Relationship="Self.FK__Patient_C__Aller__4BAC3F29" FromRole="Allergy" ToRole="Patient_Case" />
+        </EntityType>
+        <EntityType Name="Center">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Center1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Place_ID" Type="Int32" />
+          <NavigationProperty Name="Place" Relationship="Self.FK__Center__Place_ID__412EB0B6" FromRole="Center" ToRole="Place" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Doctor__Center_I__440B1D61" FromRole="Center" ToRole="Doctor" />
+          <NavigationProperty Name="Patient_Case" Relationship="Self.FK__Patient_C__Cente__5070F446" FromRole="Center" ToRole="Patient_Case" />
+        </EntityType>
+        <EntityType Name="Diagnostics">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient_Case" Relationship="Self.FK__Patient_C__Diagn__4D94879B" FromRole="Diagnostics" ToRole="Patient_Case" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="District1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Distric__46E78A0C" FromRole="District" ToRole="Patient" />
+          <NavigationProperty Name="Patient_Case" Relationship="Self.FK__Patient_C__Distr__4E88ABD4" FromRole="District" ToRole="Patient_Case" />
+          <NavigationProperty Name="Place" Relationship="Self.FK__Place__Dist_ID__3E52440B" FromRole="District" ToRole="Place" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Doctor1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Center_ID" Type="Int32" />
+          <NavigationProperty Name="Center" Relationship="Self.FK__Doctor__Center_I__440B1D61" FromRole="Doctor" ToRole="Center" />
+          <NavigationProperty Name="Patient_Case" Relationship="Self.FK__Patient_C__Docto__5165187F" FromRole="Doctor" ToRole="Patient_Case" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="CR_Number" />
+          </Key>
+          <Property Name="CR_Number" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Aadhar_No" Type="Int64" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Middle_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Relative" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Relative_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age_Year" Type="Int32" />
+          <Property Name="Age_Month" Type="Int32" />
+          <Property Name="Blood_Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Marital_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="Int64" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="District_Name" Type="Int32" />
+          <Property Name="Place" Type="Int32" />
+          <Property Name="PIN" Type="Int64" />
+          <Property Name="Registration_Date" Type="DateTime" Precision="0" />
+          <Property Name="Admin" Type="Boolean" />
+          <NavigationProperty Name="District" Relationship="Self.FK__Patient__Distric__46E78A0C" FromRole="Patient" ToRole="District" />
+          <NavigationProperty Name="Place1" Relationship="Self.FK__Patient__Place__47DBAE45" FromRole="Patient" ToRole="Place" />
+          <NavigationProperty Name="Patient_Case" Relationship="Self.FK__Patient_C__Patie__4AB81AF0" FromRole="Patient" ToRole="Patient_Case" />
+        </EntityType>
+        <EntityType Name="Patient_Case">
+          <Key>
+            <PropertyRef Name="Case_No" />
+          </Key>
+          <Property Name="Case_No" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patient_ID" Type="Int64" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Mobile" Type="Int64" />
+          <Property Name="Medical_Records" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Exam_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Examination_def" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Allergy_Name" Type="Int32" />
+          <Property Name="Allergy_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Allergy_Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Allergy_Severity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Allergy_Def" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Problem_Name" Type="Int32" />
+          <Property Name="Problem_Defination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Diagnostics_Name" Type="Int32" />
+          <Property Name="District_Name" Type="Int32" />
+          <Property Name="Place" Type="Int32" />
+          <Property Name="Center_Name" Type="Int32" />
+          <Property Name="Doctor_Name" Type="Int32" />
+          <NavigationProperty Name="Allergy" Relationship="Self.FK__Patient_C__Aller__4BAC3F29" FromRole="Patient_Case" ToRole="Allergy" />
+          <NavigationProperty Name="Center" Relationship="Self.FK__Patient_C__Cente__5070F446" FromRole="Patient_Case" ToRole="Center" />
+          <NavigationProperty Name="Diagnostics" Relationship="Self.FK__Patient_C__Diagn__4D94879B" FromRole="Patient_Case" ToRole="Diagnostics" />
+          <NavigationProperty Name="District" Relationship="Self.FK__Patient_C__Distr__4E88ABD4" FromRole="Patient_Case" ToRole="District" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Patient_C__Docto__5165187F" FromRole="Patient_Case" ToRole="Doctor" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient_C__Patie__4AB81AF0" FromRole="Patient_Case" ToRole="Patient" />
+          <NavigationProperty Name="Place1" Relationship="Self.FK__Patient_C__Place__4F7CD00D" FromRole="Patient_Case" ToRole="Place" />
+          <NavigationProperty Name="Problems" Relationship="Self.FK__Patient_C__Probl__4CA06362" FromRole="Patient_Case" ToRole="Problems" />
+        </EntityType>
+        <EntityType Name="Place">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Place1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dist_ID" Type="Int32" />
+          <NavigationProperty Name="Center" Relationship="Self.FK__Center__Place_ID__412EB0B6" FromRole="Place" ToRole="Center" />
+          <NavigationProperty Name="District" Relationship="Self.FK__Place__Dist_ID__3E52440B" FromRole="Place" ToRole="District" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Place__47DBAE45" FromRole="Place" ToRole="Patient" />
+          <NavigationProperty Name="Patient_Case" Relationship="Self.FK__Patient_C__Place__4F7CD00D" FromRole="Place" ToRole="Patient_Case" />
+        </EntityType>
+        <EntityType Name="Problems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patient_Case" Relationship="Self.FK__Patient_C__Probl__4CA06362" FromRole="Problems" ToRole="Patient_Case" />
+        </EntityType>
+        <Association Name="FK__Patient_C__Aller__4BAC3F29">
+          <End Role="Allergy" Type="Self.Allergy" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Allergy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Allergy_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Center__Place_ID__412EB0B6">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Center" Type="Self.Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Center">
+              <PropertyRef Name="Place_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Center_I__440B1D61">
+          <End Role="Center" Type="Self.Center" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Center">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Center_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Cente__5070F446">
+          <End Role="Center" Type="Self.Center" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Center">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Center_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Diagn__4D94879B">
+          <End Role="Diagnostics" Type="Self.Diagnostics" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostics">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Diagnostics_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Distric__46E78A0C">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="District_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Distr__4E88ABD4">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="District_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Place__Dist_ID__3E52440B">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Place" Type="Self.Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Place">
+              <PropertyRef Name="Dist_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Docto__5165187F">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Doctor_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Place__47DBAE45">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Patie__4AB81AF0">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="CR_Number" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Patient_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Place__4F7CD00D">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient_C__Probl__4CA06362">
+          <End Role="Problems" Type="Self.Problems" Multiplicity="0..1" />
+          <End Role="Patient_Case" Type="Self.Patient_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problems">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Patient_Case">
+              <PropertyRef Name="Problem_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Allergy" EntityType="Self.Allergy" />
+          <EntitySet Name="Center" EntityType="Self.Center" />
+          <EntitySet Name="Diagnostics" EntityType="Self.Diagnostics" />
+          <EntitySet Name="District" EntityType="Self.District" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" />
+          <EntitySet Name="Patient_Case" EntityType="Self.Patient_Case" />
+          <EntitySet Name="Place" EntityType="Self.Place" />
+          <EntitySet Name="Problems" EntityType="Self.Problems" />
+          <AssociationSet Name="FK__Patient_C__Aller__4BAC3F29" Association="Self.FK__Patient_C__Aller__4BAC3F29">
+            <End Role="Allergy" EntitySet="Allergy" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Center__Place_ID__412EB0B6" Association="Self.FK__Center__Place_ID__412EB0B6">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Center" EntitySet="Center" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Center_I__440B1D61" Association="Self.FK__Doctor__Center_I__440B1D61">
+            <End Role="Center" EntitySet="Center" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Cente__5070F446" Association="Self.FK__Patient_C__Cente__5070F446">
+            <End Role="Center" EntitySet="Center" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Diagn__4D94879B" Association="Self.FK__Patient_C__Diagn__4D94879B">
+            <End Role="Diagnostics" EntitySet="Diagnostics" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Distric__46E78A0C" Association="Self.FK__Patient__Distric__46E78A0C">
+            <End Role="District" EntitySet="District" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Distr__4E88ABD4" Association="Self.FK__Patient_C__Distr__4E88ABD4">
+            <End Role="District" EntitySet="District" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Place__Dist_ID__3E52440B" Association="Self.FK__Place__Dist_ID__3E52440B">
+            <End Role="District" EntitySet="District" />
+            <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Docto__5165187F" Association="Self.FK__Patient_C__Docto__5165187F">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Place__47DBAE45" Association="Self.FK__Patient__Place__47DBAE45">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Patie__4AB81AF0" Association="Self.FK__Patient_C__Patie__4AB81AF0">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Place__4F7CD00D" Association="Self.FK__Patient_C__Place__4F7CD00D">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient_C__Probl__4CA06362" Association="Self.FK__Patient_C__Probl__4CA06362">
+            <End Role="Problems" EntitySet="Problems" />
+            <End Role="Patient_Case" EntitySet="Patient_Case" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalManagementModelStoreContainer" CdmEntityContainer="HospitalManagementEntities">
+          <EntitySetMapping Name="Allergy">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Allergy">
+              <MappingFragment StoreEntitySet="Allergy">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Center">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Center">
+              <MappingFragment StoreEntitySet="Center">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Center1" ColumnName="Center" />
+                <ScalarProperty Name="Place_ID" ColumnName="Place_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnostics">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Diagnostics">
+              <MappingFragment StoreEntitySet="Diagnostics">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="District">
+            <EntityTypeMapping TypeName="HospitalManagementModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="District1" ColumnName="District" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctor">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Doctor1" ColumnName="Doctor" />
+                <ScalarProperty Name="Center_ID" ColumnName="Center_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="CR_Number" ColumnName="CR_Number" />
+                <ScalarProperty Name="Aadhar_No" ColumnName="Aadhar_No" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Relative" ColumnName="Relative" />
+                <ScalarProperty Name="Relative_Name" ColumnName="Relative_Name" />
+                <ScalarProperty Name="Age_Year" ColumnName="Age_Year" />
+                <ScalarProperty Name="Age_Month" ColumnName="Age_Month" />
+                <ScalarProperty Name="Blood_Group" ColumnName="Blood_Group" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="Registration_Date" ColumnName="Registration_Date" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient_Case">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Patient_Case">
+              <MappingFragment StoreEntitySet="Patient_Case">
+                <ScalarProperty Name="Case_No" ColumnName="Case_No" />
+                <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Medical_Records" ColumnName="Medical_Records" />
+                <ScalarProperty Name="Exam_Category" ColumnName="Exam_Category" />
+                <ScalarProperty Name="Examination_def" ColumnName="Examination_def" />
+                <ScalarProperty Name="Allergy_Name" ColumnName="Allergy_Name" />
+                <ScalarProperty Name="Allergy_Status" ColumnName="Allergy_Status" />
+                <ScalarProperty Name="Allergy_Duration" ColumnName="Allergy_Duration" />
+                <ScalarProperty Name="Allergy_Severity" ColumnName="Allergy_Severity" />
+                <ScalarProperty Name="Allergy_Def" ColumnName="Allergy_Def" />
+                <ScalarProperty Name="Problem_Name" ColumnName="Problem_Name" />
+                <ScalarProperty Name="Problem_Defination" ColumnName="Problem_Defination" />
+                <ScalarProperty Name="Diagnostics_Name" ColumnName="Diagnostics_Name" />
+                <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Center_Name" ColumnName="Center_Name" />
+                <ScalarProperty Name="Doctor_Name" ColumnName="Doctor_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Place">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Place">
+              <MappingFragment StoreEntitySet="Place">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Place1" ColumnName="Place" />
+                <ScalarProperty Name="Dist_ID" ColumnName="Dist_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Problems">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Problems">
+              <MappingFragment StoreEntitySet="Problems">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

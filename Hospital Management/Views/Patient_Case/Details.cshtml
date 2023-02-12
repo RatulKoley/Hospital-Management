@@ -1,0 +1,163 @@
+﻿@model Hospital_Management.Models.Patient_Case
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Patient_Case</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medical_Records)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medical_Records)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Exam_Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Exam_Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Examination_def)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Examination_def)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allergy_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allergy_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allergy_Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allergy_Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allergy_Severity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allergy_Severity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allergy_Def)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allergy_Def)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Problem_Defination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problem_Defination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allergy.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allergy.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Center.Center1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Center.Center1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnostics.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnostics.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District.District1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District.District1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor.Doctor1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.Doctor1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.First_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place1.Place1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place1.Place1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Problems.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Problems.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Case_No }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
